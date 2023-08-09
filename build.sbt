@@ -7,6 +7,10 @@ lazy val root = (project in file("."))
     name := "LearnScala"
   )
 
+//resolvers ++= Seq(
+//  "Typesafe" at "http://repo.typesafe.com/typesafe/releases/"
+//)
+
 libraryDependencies ++= Seq(
   "org.apache.commons" % "commons-lang3" % "3.12.0",
   "com.spotify.sparkey" % "sparkey" % "3.2.4",
@@ -23,3 +27,9 @@ libraryDependencies ++= Seq(
   "io.circe" %% "circe-generic",
   "io.circe" %% "circe-parser"
 ).map(_ % circeVersion)
+
+// https://mvnrepository.com/artifact/com.spotify/magnolify-avro
+libraryDependencies += "com.spotify" %% "magnolify-avro" % "0.6.2"
+
+// https://mvnrepository.com/artifact/com.google.guava/guava
+libraryDependencies += "com.google.guava" % "guava" % "31.1-jre"

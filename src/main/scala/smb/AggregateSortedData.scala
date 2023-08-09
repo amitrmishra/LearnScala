@@ -1,6 +1,6 @@
 package smb
 
-object SMAggregate {
+object AggregateSortedData {
 
   def main(args: Array[String]): Unit = {
     val orders = List[Order](
@@ -25,19 +25,19 @@ object SMAggregate {
 
     val sortedOrders = orders.sortBy(_.userId)
 
-    var currentUserId: Int = sortedOrders.head.userId
-    var currentSumOrders: Int = sortedOrders.head.value
+    var previousUserId: Int = sortedOrders.head.userId
+    var sumOrders: Int = sortedOrders.head.value
 
     for (order <- sortedOrders.tail) {
-      if (order.userId == currentUserId) {
-        currentSumOrders += order.value
+      if (order.userId == previousUserId) {
+        sumOrders += order.value
       } else {
-        println(s"${(currentUserId, currentSumOrders)}")
-        currentUserId = order.userId
-        currentSumOrders = order.value
+        println(s"${(previousUserId, sumOrders)}")
+        previousUserId = order.userId
+        sumOrders = order.value
       }
     }
-    println((currentUserId, currentSumOrders))
+    println((previousUserId, sumOrders))
   }
 
   case class Order(userId: Int, value: Int)

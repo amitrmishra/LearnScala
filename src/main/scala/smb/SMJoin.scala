@@ -1,20 +1,6 @@
 package smb
 
 object SMJoin {
-  /*
-  TODO: Develop the intuition incrementally:
-  1. Simple inner join without duplicates
-  2. A full outer join without duplicates, emit record for ROJ if right pointer is going to be
-  incremented as it won't be matched anymore (hence no more chances of it having a match),
-  emit record for LOJ if left pointer is going to be incremented as it won't be matched anymore (hence no more chances of it having a match)
-  3. What if there are duplicates on the left side
-  4. What if there are duplicates on the right side
-  5. What if there are duplicates on the both sides
-  6. What if there are left overs on the left side
-  7. What if there are left overs on the right side
-  8. Test on all duplicates
-  9. Test on no match (left: 1 to 4, right: 5 to 8)
-   */
   def main(args: Array[String]): Unit = {
     val sumOrders = List(
       SumOrders(101, 230),
@@ -50,7 +36,9 @@ object SMJoin {
         // Increment right pointer to cover all matching records
         rightEnd = rightStart
         while (
-          rightEnd < customers.length && leftUserId == customers(rightEnd).userId
+          rightEnd < customers.length && leftUserId == customers(
+            rightEnd
+          ).userId
         ) {
           println(
             (

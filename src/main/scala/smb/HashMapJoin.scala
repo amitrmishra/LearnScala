@@ -3,13 +3,6 @@ package smb
 import scala.collection.mutable
 
 object HashMapJoin {
-  // TODO: Develop the intuition incrementally
-  // 1. inner join without duplicates
-  // 2. inner join with duplicates on the left side
-  // 3. inner join with duplicates on the right side
-  // 4. inner join with duplicates on both sides
-  // 5. left outer join
-  // 6. full and right outer join
   def main(args: Array[String]): Unit = {
     val sumOrders = List(
       SumOrders(101, 230),
